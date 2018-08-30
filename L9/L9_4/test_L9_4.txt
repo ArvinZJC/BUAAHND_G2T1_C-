@@ -1,0 +1,5 @@
+XXXXXXs a test file, which is used to test "L9_4.cpp".
+"L9_4.cpp" is a program that overrides characters from the beginning of a specified text file.
+
+The original first line: XXXXXXs a test file, which is used to test "L9_4.cpp".
+After overriding: This is a test file, which is used to test "L9_4.cpp".
