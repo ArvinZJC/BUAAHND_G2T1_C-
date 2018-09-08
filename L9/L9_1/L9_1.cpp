@@ -1,4 +1,5 @@
 //2018.01.02, L9.pdf, P28, program that uses the list container
+
 #include <iostream>
 #include <list>
 #include <algorithm>
@@ -26,4 +27,4 @@ int main()
 
 	system( "Pause" );
 	return 0;
-} //end function main
+} //end main

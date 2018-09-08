@@ -1,4 +1,5 @@
 //2017.12.12, L2.pdf, P37, program that shows the effect of using "boolalpha"
+
 #include <iostream>
 using namespace std;
 
@@ -15,4 +16,4 @@ int main()
 
 	system( "Pause" );
 	return 0;
-} //end function main
+} //end main

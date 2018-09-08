@@ -1,4 +1,5 @@
 //2017.12.30, L8_A.pdf, Assignment 1, program that process a sequence of integers according to the user's choice
+
 #include <iostream>
 #include <ctime>
 #include <vector>
@@ -6,25 +7,29 @@
 #include <regex>
 using namespace std;
 
-class PROCseqOfInt //PROC and seq (SEQ) are respectively the abbreviations of process and sequence
+/* This class contains functions for processing a sequence of integers. */
+class ProcessSequenceOfIntegers
 {
-	vector<int> SEQofInt;
-	vector<int>::iterator num; //num is the abbreviation of number
+	vector<int> sequenceOfIntegers;
+	vector<int>::iterator number;
 
-	int PROCinputForISRT_SRCH() //ISRT and SRCH are respectively the abbreviations of insert and search
+	/* Process the input for functions Insert() and Search(). */
+	int ProcessInputForInsertAndSearch()
 	{
 		int run = 1;
 		string input;
-
-		while( run == 1 ) //loop until the input is legal (run = 0)
+		
+		//loop until the input is legal (run = 0)
+		while( run == 1 )
 		{
 			getline( cin, input );
 
-			regex pattern( "\\s*-?\\d+\\s*" );
-			/* allow entering an integer;
+			/* allow entering an integer
 			   the input can start with spaces and can also end up with spaces */
+			regex pattern( "\\s*-?\\d+\\s*" );
 
-			if( regex_match( input, pattern ) ) //check if the input is legal
+			//check if the input is legal
+			if( regex_match( input, pattern ) )
 				run = 0;
 			else
 				cout << "Error! Illegal input.\n"
@@ -36,22 +41,25 @@ class PROCseqOfInt //PROC and seq (SEQ) are respectively the abbreviations of pr
 		
 		input.erase( input.find_last_not_of( " " ) + 1, input.size() ); //delete the probable space(s) at the back
 		return stoi( input ); //convert "input" to an integer
-	} //end function PROCinputForISRT_SRCH
+	} //end function ProcessInputForInsertAndSearch
 
-	int PROCinputForDEL() //DEL is the abbreviation of delete
+	/* Process the input for function Delete(). */
+	int ProcessInputForDelete()
 	{
 		int run = 1;
 		string input;
-
-		while( run == 1 ) //loop until the input is legal (run = 0)
+		
+		//loop until the input is legal (run = 0)
+		while( run == 1 )
 		{
 			getline( cin, input );
 			
-			regex pattern( "\\s*[0-9]*[1-9]+\\s*" );
-			/* allow entering a positive integer;
+			/* allow entering a positive integer
 			   the input can start with spaces and can also end up with spaces */
-
-			if( regex_match( input, pattern ) ) //check if the input is legal
+			regex pattern( "\\s*[0-9]*[1-9]+\\s*" );
+			
+			//check if the input is legal
+			if( regex_match( input, pattern ) )
 				run = 0;
 			else
 				cout << "Error! Illegal input.\n"
@@ -63,43 +71,45 @@ class PROCseqOfInt //PROC and seq (SEQ) are respectively the abbreviations of pr
 
 		input.erase( input.find_last_not_of( " " ) + 1, input.size() - 1 ); //delete the probable space(s) at the back
 		return stoi( input ); //convert "input" to an integer
-	} //end function PROCinputForDEL
+	} //end function ProcessInputForDelete
 
-	int SRCH( int ENTRnum ) //ENTR is the abbreviation of enter
+	/* Locate the integer entered. */
+	int LocateInteger( int numberEntered )
 	{
-		int LOC = 0;
-		/* LOC is the abbreviation of location;
-		   0 should be assigned to "LOC" as an initial value which represents that there is no such integer */
+		int location = 0; //0 should be assigned to "location" as an initial value which represents that there is no such integer
 
-		for( int CNT = 0; CNT < ( int ) SEQofInt.size(); CNT++ )
-		/* loop to search the integer entered;
-		   CNT is the abbreviation of counter */
+		//loop to search the integer entered
+		for( int counter = 0; counter < ( int ) sequenceOfIntegers.size(); counter++ )
 		{
-			if( SEQofInt[ CNT ] == ENTRnum ) //if the integer exists, record its location
+			//if the integer exists, record its location
+			if( sequenceOfIntegers[ counter ] == numberEntered )
 			{
-				LOC = CNT + 1;
+				location = counter + 1;
 				break;
 			} //end if
 		} //end for
 
-		return LOC;
-	} //end function SRCH
+		return location;
+	} //end function LocateInteger
 
 public:
-	char PROCinputForSEL() //SEL is the abbreviation of selection
+	/* Get a specified character for the selection. */
+	char ProcessSelectionEntered()
 	{
 		int run = 1;
 		string input;
-
-		while( run == 1 ) //loop until the input is legal (run = 0)
+		
+		//loop until the input is legal (run = 0)
+		while( run == 1 )
 		{
 			getline( cin, input );
 			
-			regex pattern( "\\s*([A-D]|Q|[a-d]|q)\\s*" );
-			/* allow entering A or B or C or D or Q (the lowercase letter also accepted);
+			/* allow entering A or B or C or D or Q (the lowercase letter also accepted)
 			   the input can start with spaces and can also end up with spaces */
-
-			if( regex_match( input, pattern ) ) //check if the input is legal
+			regex pattern( "\\s*([A-D]|Q|[a-d]|q)\\s*" );
+			
+			//check if the input is legal
+			if( regex_match( input, pattern ) )
 				run = 0;
 			else
 				cout << "Error! Illegal input.\n"
@@ -111,127 +121,136 @@ public:
 
 		input.erase( input.find_last_not_of( " " ) + 1, input.size() - 1 ); //delete the probable space(s) at the back
 		return input[ 0 ]; //convert "input" to an character
-	} //end function PROCinputForSEL
+	} //end function ProcessSelectionEntered
 
-	void generate()
+	/* Generate a sequence of integers. */
+	void Generate()
 	{
-		for( int CNT = 1; CNT <= 5; CNT++ ) //loop to add 5 random integers between 1 and 1,000 to the vector SEQofInt
-			SEQofInt.push_back( 1 + rand() % 1000 );
+		//loop to add 5 random integers between 1 and 1,000 to the vector named sequenceOfIntegers
+		for( int counter = 1; counter <= 5; counter++ )
+			sequenceOfIntegers.push_back( 1 + rand() % 1000 );
 
-		sort( SEQofInt.begin(), SEQofInt.end() ); //sort all integers from smallest to largest
-	} //end function generate
+		sort( sequenceOfIntegers.begin(), sequenceOfIntegers.end() ); //sort all integers from smallest to largest
+	} //end function Generate
 
-	void PRNall() //PRN is the abbreviation of print
+	/* Print all integers from smallest to largest. */
+	void PrintAllIntegers()
 	{
-		if( SEQofInt.empty() )
+		if( sequenceOfIntegers.empty() )
 			cout << "Error! There is no number." << endl;
 		else
 		{
 			cout << "From smallest to largest:" << endl;
 
-			for( num = SEQofInt.begin(); num != SEQofInt.end(); num++ )
 			//loop to print all integers from smallest to largest
-				cout << *num << endl;
-		}
-	} //end fuction PRNall
+			for( number = sequenceOfIntegers.begin(); number != sequenceOfIntegers.end(); number++ )
+				cout << *number << endl;
+		} //end if...else
+	} //end fuction PrintAllIntegers
 
-	void ISRT()
+	/* Add an integer. */
+	void Insert()
 	{
-		int ENTRnum, run = 1;
+		int numberEntered, run = 1;
 		
 		cout << "Enter an integer: ";
 
-		while( run != 0 ) //loop until a proper integer is entered
+		//loop until a proper integer is entered
+		while( run != 0 )
 		{
-			ENTRnum = PROCinputForISRT_SRCH(); //call the specified function to get a proper integer
-			run = SRCH( ENTRnum ); //call the specified function to search the integer entered
+			numberEntered = ProcessInputForInsertAndSearch(); //call the specified function to get a proper integer to insert
+			run = LocateInteger( numberEntered ); //call the specified function to locate the integer entered
 			
 			if( run != 0 )
 				cout << "Error! There exists the same integer.\n"
 					 << "Please enter again: ";
 		} //end while
 
-		SEQofInt.push_back( ENTRnum );
-		sort( SEQofInt.begin(), SEQofInt.end() ); //sort all integers from smallest to largest
+		sequenceOfIntegers.push_back( numberEntered );
+		sort( sequenceOfIntegers.begin(), sequenceOfIntegers.end() ); //sort all integers from smallest to largest
 
-		cout << "\nThe integer " << ENTRnum << " has been successfully inserted." << endl;
-	} //end function ISRT
+		cout << "\nThe integer " << numberEntered << " has been successfully inserted." << endl;
+	} //end function Insert
 
-	void DEL()
+	/* Delete an integer. */
+	void Delete()
 	{
-		if( ( int ) SEQofInt.size() == 0 )
+		if( ( int ) sequenceOfIntegers.size() == 0 )
 			cout << "Error! There is no number to delete.\n"
 			     << "You may select Option B in the menu for at least 1 integer before deleting one." << endl;
 		else
 		{
-			cout << "There are " << SEQofInt.size() << " integers.\n"
+			cout << "There are " << sequenceOfIntegers.size() << " integers.\n"
 				 << "(1 stands for the 1st, 2 for the 2nd...)\n"
 				 << "Enter which integer to delete: ";
 
-			int ENTRnum = PROCinputForDEL(); //call the specified function to get a proper integer
+			int numberEntered = ProcessInputForDelete(); //call the specified function to get a proper integer to delete
 
-			while( ENTRnum > ( int ) SEQofInt.size() ) //loop until a proper integer is entered
+			//loop until a proper integer is entered
+			while( numberEntered > ( int ) sequenceOfIntegers.size() )
 			{
-				cout << "Error! There are only " << SEQofInt.size() << " integers.\n"
+				cout << "Error! There are only " << sequenceOfIntegers.size() << " integers.\n"
 					 << "Please enter again: ";
 
-				ENTRnum = PROCinputForDEL(); //call the specified function to process the input
+				numberEntered = ProcessInputForDelete(); //call the specified function to get a proper integer to delete
 			} //end while
 
-			num = SEQofInt.begin() + ENTRnum - 1; //locate the index of the specified integer
+			number = sequenceOfIntegers.begin() + numberEntered - 1; //locate the index of the specified integer
 
-			cout << "The specified integer " << *num << " has been succesfully deleted." << endl;
+			cout << "The specified integer " << *number << " has been succesfully deleted." << endl;
 
-			SEQofInt.erase( num );
+			sequenceOfIntegers.erase( number );
 		} //end if...else
-	} //end function DEL
+	} //end function Delete
 
-	void SRCH()
+	/* Search an integer. */
+	void Search()
 	{
-		int ENTRnum;
+		int numberEntered;
 
 		cout << "Enter an integer: ";
 
-		ENTRnum = PROCinputForISRT_SRCH(); //call the specified function to get a proper integer
+		numberEntered = ProcessInputForInsertAndSearch(); //call the specified function to get a proper integer to search
 
 		cout << endl;
 		
-		switch( SRCH( ENTRnum ) )
+		//call the specified function to locate the integer entered
+		switch( LocateInteger( numberEntered ) )
 		{
 		case 0:
 			cout << "There is no such integer." << endl;
 			break;
 			
 		case 1:
-			cout << "The specified integer " << ENTRnum << " is the 1st one." << endl;
+			cout << "The specified integer " << numberEntered << " is the 1st one." << endl;
 			break;
 
 		case 2:
-			cout << "The specified integer " << ENTRnum << " is the 2nd one." << endl;
+			cout << "The specified integer " << numberEntered << " is the 2nd one." << endl;
 			break;
 
 		case 3:
-			cout << "The specified integer " << ENTRnum << " is the 3rd one." << endl;
+			cout << "The specified integer " << numberEntered << " is the 3rd one." << endl;
 			break;
 
 		default:
-			cout << "The specified integer " << ENTRnum << " is the " << SRCH( ENTRnum ) << "th one." << endl;
+			cout << "The specified integer " << numberEntered << " is the " << LocateInteger( numberEntered ) << "th one." << endl; //call the specified function to locate the integer entered
 		} //end switch-case
-	} //end function SRCH
-}; //end class PROCseqOfInt
+	} //end function Search
+}; //end class ProcessSequenceOfIntegers
 
 int main()
 {
-	PROCseqOfInt test; //create a PROCseqOfInt object and assign it to "test"
+	ProcessSequenceOfIntegers user; //create a ProcessSequenceOfIntegers object and assign it to "user"
 
-	char SEL = '0';
+	char selection = '0';
 	string input;
 
 	srand( time( NULL ) );
 
-	test.generate(); //call the specified function in class PROCseqOfInt to generate a sequence of integers
+	user.Generate(); //call the specified function in class ProcessSequenceOfIntegers to generate a sequence of integers
 
-	while( ( SEL != 'Q' ) || ( SEL != 'q' ) )
+	while( ( selection != 'Q' ) || ( selection != 'q' ) )
 	{
 		cout << "For the current sequence of integers,\n"
 			 << "  A: print all integers\n"
@@ -243,37 +262,36 @@ int main()
 		     //these asterisks are used for a better layout
 		     << "Enter your selection (A/B/C/D/Q, the lowercase letter also accepted): ";
 
-		SEL = test.PROCinputForSEL(); //call the specified function in class PROCseqOfInt to get a specified character
+		selection = user.ProcessSelectionEntered(); //call the specified function in class ProcessSequenceOfIntegers to get a specified character
 
 		cout << endl;
 
-		switch( SEL )
+		switch( selection )
 		{
 		case 'A':
 		case 'a':
-			test.PRNall();
-			//call the specified function in class PROCseqOfInt to print all integers from smallest to largest
+			user.PrintAllIntegers(); //call the specified function in class ProcessSequenceOfIntegers to print all integers from smallest to largest
 			system( "Pause" );
 			system( "cls" );
 			break;
 
 		case 'B':
 		case 'b':
-			test.ISRT(); //call the specified function in class PROCseqOfInt to add an integer
+			user.Insert(); //call the specified function in class ProcessSequenceOfIntegers to add an integer
 			system( "Pause" );
 			system( "cls" );
 			break;
 
 		case 'C':
 		case 'c':
-			test.DEL(); //call the specified function in class PROCseqOfInt to delete an integer
+			user.Delete(); //call the specified function in class ProcessSequenceOfIntegers to delete an integer
 			system( "Pause" );
 			system( "cls" );
 			break;
 
 		case 'D':
 		case 'd':
-			test.SRCH(); //call the specified function in class PROCseqOfInt to search an integer
+			user.Search(); //call the specified function in class ProcessSequenceOfIntegers to search an integer
 			system( "Pause" );
 			system( "cls" );
 			break;
@@ -283,4 +301,4 @@ int main()
 			return 0;
 		} //end switch-case
 	} //end while
-} //end function main
+} //end main

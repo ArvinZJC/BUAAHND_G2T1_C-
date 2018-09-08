@@ -1,12 +1,15 @@
-/* 2017.12.22, an extension of Assignment 1, 5-digit number code decryptor;
+/* 2017.12.22, an extension of Assignment 1, 5-digit number code decryptor
    this program rewritten from L5_A1_2.cpp processes the input more scrupulously */
+
 #include <iostream>
 #include <string>
 using namespace std;
 
-int CHKinput( string input ) //CHK is the abbreviation of check
+/* Check the input. */
+int CheckInput( string input )
 {
-	if( input.size() != 5 ) //ensure that there are 5 digits
+	//ensure that there are 5 digits
+	if( input.size() != 5 )
 	{
 		cout << "Error! Please enter again: ";
 		
@@ -14,11 +17,10 @@ int CHKinput( string input ) //CHK is the abbreviation of check
 	}
 	else
 	{
-		for( int CNT = 0; CNT < 5; CNT++ )
-		/* ensure that there is no non-digital character;
-		   CNT is the abbreviation of counter */
+		//ensure that there is no non-digital character
+		for( int counter = 0; counter < 5; counter++ )
 		{
-			if( input[ CNT ] < '0' || input[ CNT ] > '9' )
+			if( input[ counter ] < '0' || input[ counter ] > '9' )
 			{
 				cout << "Error! Please enter again: ";
 
@@ -28,29 +30,33 @@ int CHKinput( string input ) //CHK is the abbreviation of check
 
 		return 0;
 	} //end if...else
-} //end function CHKinput
+} //end function CheckInput
 
-void decrypt( int numCD ) //num and CD are respectively the abbreviations of number and code
+/* Descrypt a 5-digit number code. */
+void Decrypt( int numberCode )
 {
-	int num[ 5 ];
+	int number[ 5 ];
 
 	cout << "Your number code decrypted: ";
 
-	for( int CNT = 0; CNT < 5; CNT++ ) //loop to encrypt the 5-digit number code
+	//loop to encrypt the 5-digit number code
+	for( int counter = 0; counter < 5; counter++ )
 	{
-		//store the 5-digit number code encrypted in the array named num in reverse order
-		num[ CNT ] = numCD % 10;
-		numCD /= 10;
+		{
+			number[counter] = numberCode % 10;
+			numberCode /= 10;
+		} //store the 5-digit number code encrypted in the array named number in reverse order
+		
+		{
+			number[counter] += 5;
+			number[counter] %= 10;
+		} //decrypt each number using the formula "( x + 5 ) % 10"
 
-		//decrypt each number using the formula "( x + 5 ) % 10"
-		num[ CNT ] += 5;
-		num[ CNT ] %= 10;
-
-		cout << num[ CNT ];
+		cout << number[ counter ];
 	} //end for
 
 	cout << endl;
-} //end function decrypt
+} //end function Decrypt
 
 int main()
 {
@@ -59,14 +65,15 @@ int main()
 	
 	cout << "Enter your 5-digit number code encrypted: ";
 
-	while( run ) //loop until the input is legal (run = 0)
+	//loop until the input is legal (run = 0)
+	while( run )
 	{
 		getline( cin, input );
-		run = CHKinput( input ); //call the specified function to check the input
+		run = CheckInput( input ); //call the specified function to check the input
 	} //end while
 
-	decrypt( stoi( input ) ); //call the specified function to decrypt the 5-digit number code
+	Decrypt( stoi( input ) ); //call the specified function to decrypt the 5-digit number code
 
 	system( "Pause" );
 	return 0;
-} //end function main
+} //end main

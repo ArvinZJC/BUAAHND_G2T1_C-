@@ -1,25 +1,28 @@
-/* 2017.12.19, tree printing program;
+/* 2017.12.19, tree printing program
    this program rewritten from L3_A1.cpp uses setw() to help to print spaces */
+
 #include <iostream>
 #include <iomanip>
 using namespace std;
 
 int main()
 {
-	int num; //num is the abbreviation of number
+	int number;
 
 	cout << "Enter an integer between 3 and 10 to print a tree: ";
-	cin >> num;
+	cin >> number;
 
-	while( ( num < 3 ) || ( num > 10 ) ) //loop until a proper integer is entered
+	//loop until a proper integer is entered
+	while( ( number < 3 ) || ( number > 10 ) )
 	{
 		cout << "Error! Please enter again: ";
-		cin >> num;
+		cin >> number;
 	} //end while
 
-	for( int i = 1; i <= num; i++ ) //loop to print the crown of the tree
+	//loop to print the crown of the tree
+	for( int i = 1; i <= number; i++ )
 	{
-		cout << setw( num - i + 1 );
+		cout << setw( number - i + 1 );
 
 		for( int j = 1; j <= i * 2 - 1; j++ )
 			cout << "*";
@@ -27,11 +30,10 @@ int main()
 		cout << endl;
 	} //end for
 
-	for( int LEN = 1; LEN <= num; ++LEN )
-		/* loop to print the trunk of the tree;
-		LEN is the abbreviation of length */
-		cout << setw( num ) << "*" << endl;
+	//loop to print the trunk of the tree
+	for( int length = 1; length <= number; ++length )
+		cout << setw( number ) << "*" << endl;
 
 	system( "Pause" );
 	return 0;
-} //end function main
+} //end main

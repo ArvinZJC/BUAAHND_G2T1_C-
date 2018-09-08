@@ -1,25 +1,26 @@
-/* 2017.12.12, program that gets the max of 3 numbers entered;
+/* 2017.12.12, program that gets the max of 3 numbers entered
    my 2nd method */
+
 #include <iostream>
 using namespace std;
 
 int main()
 {
-	double num1, num2, num3, max;
+	double number1, number2, number3, max;
 
 	cout << "Enter 3 numbers each separated by a space: ";
-	cin >> num1 >> num2 >> num3;
+	cin >> number1 >> number2 >> number3;
 
-	max = num1; //assume that "num1" is the largest to start
+	max = number1; //assume that the value of the variable "number1" is the largest to start
 	
-	if( num2 > max ) //determine whether "num2" is larger than "max"
-		max = num2;
+	if( number2 > max ) //determine whether the value of the variable "number2" is larger than that of the variable "max"
+		max = number2;
 
-	if( num3 > max ) //determine whether "num3" is larger than "max"
-		max = num3;
+	if( number3 > max ) //determine whether the value of the variable "number3" is larger than that of the variable "max"
+		max = number3;
 
 	cout << "The max: " << max << endl;
 
 	system( "Pause" );
 	return 0;
-} //end function main
+} //end main

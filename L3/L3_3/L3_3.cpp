@@ -1,23 +1,25 @@
 //2017.12.15, L3.pdf, P42, program that shows the level of an integer grade
+
 #include <iostream>
 using namespace std;
 
 int main()
 {
-	int GDE; //GDE is the abbreviation of grade
+	int grade;
 
 	cout << "Enter an integer grade between 0 and 100: ";
-	cin >> GDE;
+	cin >> grade;
 	
-	while( GDE < 0 || GDE > 100 ) //loop until a proper integer grade is entered
+	//loop until a proper integer grade is entered
+	while( grade < 0 || grade > 100 )
 	{
 		cout << "Error! Please enter again: ";
-		cin >> GDE;
-	}
+		cin >> grade;
+	} //end while
 
 	cout << endl;
 
-	switch( GDE / 10 )
+	switch( grade / 10 )
 	{
 	case 10:
 	case 9:
@@ -42,4 +44,4 @@ int main()
 
 	system( "Pause" );
 	return 0;
-} //end function main
+} //end main

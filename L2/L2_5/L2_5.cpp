@@ -1,23 +1,25 @@
 //2017.12.12, program that uses a goto statement to enable the user to decide whether to perform another operation
+
 #include <iostream>
 using namespace std;
 
 int main()
 {
 calculator:
-	int num1, num2; //num is the abbreviation of number
+	int number1, number2;
 	char run;
 
 	cout << "Enter 2 integers: ";
-	cin >> num1 >> num2;
-	cout << "\n" << num1 << " ¡Á " << num2 << " = " << num1 * num2 << "\n"
-		 << num1 << " + " << num2 << " = " << num1 + num2 << "\n"
+	cin >> number1 >> number2;
+	cout << "\n" << number1 << " ¡Á " << number2 << " = " << number1 * number2 << "\n"
+		 << number1 << " + " << number2 << " = " << number1 + number2 << "\n"
 		 << "\nDo you wish to perform another operation? (Y/N)  ";
 	cin >> run;
 
+	//although there is more than one statement in the case part, we do not need to use "{}"
 	switch( run )
 	{
-	case 'Y': //although there is more than one statement in the case part, we do not need to use "{}"
+	case 'Y':
 	case 'y':
 		cout << endl;
 		goto calculator; //repeat the calculation
@@ -32,4 +34,4 @@ calculator:
 	
 	system( "Pause" );
 	return 0;
-} //end function main
+} //end main

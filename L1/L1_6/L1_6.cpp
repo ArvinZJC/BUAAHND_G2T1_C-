@@ -1,4 +1,5 @@
 //2017.12.08, L1.pdf, P84, program that illustrates how to keep the specified number of decimal places
+
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -12,4 +13,4 @@ int main()
 
 	system( "Pause" );
 	return 0;
-} //end function main
+} //end main

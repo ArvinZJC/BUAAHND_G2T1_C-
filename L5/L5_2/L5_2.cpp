@@ -1,21 +1,23 @@
 //2017.12.23, program that uses Selection Sort
+
 #include <iostream>
 using namespace std;
 
-void outputArray( int array[] )
+/* Output an array. */
+void OutputArray( int array[] )
 {
-	for( int CNT = 0; CNT < 5; CNT++ ) //CNT is the abbreviation of counter
-		cout << array[ CNT ] << "  ";
-} //end function outputArray
+	for( int counter = 0; counter < 5; counter++ )
+		cout << array[ counter ] << "  ";
+} //end function OutputArray
 
 int main()
 {
-	int k, tmp; //tmp is the abbreviation of temp
+	int k, temp;
 	int array[] = { 5, 5, 2, 5, 3 };
 
 	cout << "Before sorting:" << endl;
 
-	outputArray( array );
+	OutputArray( array ); //call the specified function to output the array named array
 
 	for( int i = 0; i < 4; i++ )
 	{
@@ -29,9 +31,9 @@ int main()
 
 		if( i != k )
 		{
-			tmp = array[ i ];
+			temp = array[ i ];
 			array[ i ] = array[ k ];
-			array[ k ] = tmp;
+			array[ k ] = temp;
 		}
 		else
 			break;
@@ -39,10 +41,10 @@ int main()
 
 	cout << "\nAfter sorting:" << endl;
 
-	outputArray( array );
+	OutputArray( array ); //call the specified function to output the array named array
 
 	cout << endl;
 
 	system( "Pause" );
 	return 0;
-} //end function main
+} //end main

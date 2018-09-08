@@ -1,4 +1,5 @@
 //2017.12.08, L1.pdf, P78-80, program using some fuctions in the <cmath> header file to finish some calculations
+
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -18,4 +19,4 @@ int main()
 
 	system( "Pause" );
 	return 0;
-} //end function main
+} //end main

@@ -1,73 +1,74 @@
 //2017.12.15, L3_A.pdf, Assignment 2, parking charge calculator
+
 #include <iostream>
 #include <cmath>
 using namespace std;
 
-void calculateTotCRG( int hourlyCRG, int dailyCRG_max )
-//tot and CRG are respectively the abbreviations of total and charge
+/* Calculate the total parking charge. */
+void CalculateTotalCharge( int hourlyCharge, int dailyCharge_max )
 {
-	int HH, MM; //HH and MM are respectively the abbreviations of hour and minute
-	double TM, x, y, totCRG; //TM is the abbreviation of time
+	int hour, minute;
+	double time, x, y, totalCharge;
 	
 	cout << "Enter hours and minutes parked each separated by a space: ";
-	cin >> HH >> MM;
+	cin >> hour >> minute;
 	
-	while( ( HH == 0 && MM == 0 ) || ( HH < 0) || (MM < 0 ) || ( MM > 60 ) )
-	//loop until proper integers are entered for "HH" and "MM"
+	//loop until proper integers are entered for "hour" and "minute"
+	while( ( hour == 0 && minute == 0 ) || ( hour < 0) || (minute < 0 ) || ( minute > 60 ) )
 	{
 		cout << "Error! Please enter again each separated by a space: ";
-		cin >> HH >> MM;
+		cin >> hour >> minute;
 	} //end while
 	
-	if( MM > 30 ) //30 < MM ¡Ü 60 is regarded as 60 minutes (1 hour)
-		TM = HH + 1;
-	else if( MM == 0 )
-		TM = HH;
-	else //30 minutes or part therof (0 excluded) is regarded as 30 minutes (0.5 hour)
-		TM = HH + 0.5;
-	
-	x = TM / 24;
-	y = TM - floor(x) * 24;
-	/* calculate "TM Mod 24" instead of "TM % 24" since "TM" may be a decimal;
-	   0 ¡Ü y ¡Ü 23.5 */
-	
-	if( ( y >= 16.5 && y <= 23.5 ) || ( y == 0 ) )
-	//the parking charge is calculated on 2 cases because the daily charge has a max value
-		totCRG = ceil(x) * dailyCRG_max;
+	//30 < minute ¡Ü 60 is regarded as 60 minutes (1 hour)
+	if( minute > 30 )
+		time = hour + 1;
+	else if( minute == 0 )
+		time = hour;
+	//30 minutes or part therof (0 excluded) is regarded as 30 minutes (0.5 hour)
 	else
-		totCRG = floor(x) * dailyCRG_max + y * hourlyCRG;
+		time = hour + 0.5;
+	
+	x = time / 24;
+	/* calculate "time Mod 24" instead of "time % 24" since "time" may be a decimal
+	   0 ¡Ü y ¡Ü 23.5 */
+	y = time - floor(x) * 24;
+	
+	//the parking charge is calculated on 2 cases because the daily charge has a max value
+	if( ( y >= 16.5 && y <= 23.5 ) || ( y == 0 ) )
+		totalCharge = ceil(x) * dailyCharge_max;
+	else
+		totalCharge = floor(x) * dailyCharge_max + y * hourlyCharge;
 
-	cout << "The parking charge: " << totCRG << " RMB" << endl;
-} //end function calculateTotCRG
+	cout << "The parking charge: " << totalCharge << " RMB" << endl;
+} //end function CalculateTotalCharge
 
 int main()
 {
-	char SEL = '0'; //SEL is the abbreviation of selection
+	char selection = '0';
 
-	while( ( SEL != 'Q' ) || ( SEL != 'q' ) )
+	while( ( selection != 'Q' ) || ( selection != 'q' ) )
 	{
 		cout << "  A: oversize vehicle\n"
 			 << "  B: compact car\n"
 			 << "  Q: quit" << endl;
-		cout << "*******************************************************" << endl;
-		//these asterisks are used for a better layout
+		cout << "*******************************************************" << endl; //these asterisks are used for a better layout
 		cout << "Enter your selection (A/B/Q, the lowercase letter also accepted): ";
-		cin >> SEL;
+		cin >> selection;
 		cout << endl;
 
-		switch( SEL )
+		switch( selection )
 		{
 		case 'A':
 		case 'a':
-			calculateTotCRG( 10, 160 );
-			//call the specified function to calculate the parking charge for an oversize vehicle
+			CalculateTotalCharge( 10, 160 ); //call the specified function to calculate the parking charge for an oversize vehicle
 			system( "Pause" );
 			system( "cls" ); //clear the screen
 			break;
 
 		case 'B':
 		case 'b':
-			calculateTotCRG( 5, 80 ); //call the specified function to calculate the parking charge for a compact car
+			CalculateTotalCharge( 5, 80 ); //call the specified function to calculate the parking charge for a compact car
 			system( "Pause" );
 			system( "cls" );
 			break;
@@ -76,10 +77,11 @@ int main()
 		case 'q':
 			return 0;
 
-		default: //execute if the user enters one character which is an unspecified one
+		//execute if the user enters one character which is an unspecified one
+		default:
 			cout << "Error! There is no such selection." << endl;
 			system( "Pause" );
 			system( "cls" );
 		} //end switch-case
 	} //end while
-} //end function main
+} //end main

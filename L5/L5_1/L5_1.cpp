@@ -1,22 +1,24 @@
 //2017.12.23, program that uses Bubble Sort
+
 #include <iostream>
 using namespace std;
 
-void outputArray( int array[] )
+/* Output an array. */
+void OutputArray( int array[] )
 {
-	for( int CNT = 0; CNT < 5; CNT++ ) //CNT is the abbreviation of counter
-		cout << array[ CNT ] << "  ";
-} //end function outputArray
+	for( int counter = 0; counter < 5; counter++ )
+		cout << array[ counter ] << "  ";
+} //end function OutputArray
 
 int main()
 {
-	int tmp; //tmp is the abbreviation of temp
+	int temp;
 	int array[] = { 5, 5, 2, 5, 3 };
 	bool run;
 
 	cout << "Before sorting:\n";
 
-	outputArray( array );
+	OutputArray( array ); //call the specified function to output the array named array
 
 	for( int i = 0; i < 4; i++ )
 	{
@@ -26,9 +28,9 @@ int main()
 		{
 			if( array[ j ] > array[ j + 1 ] )
 			{
-				tmp = array[ j ];
+				temp = array[ j ];
 				array[ j ] = array[ j + 1 ];
-				array[ j + 1 ] = tmp;
+				array[ j + 1 ] = temp;
 				run = false;
 			} //end if
 		} //end for
@@ -39,10 +41,10 @@ int main()
 
 	cout << "\nAfter sorting:\n";
 
-	outputArray( array );
+	OutputArray( array ); //call the specified function to output the array named array
 
 	cout << endl;
 
 	system( "Pause" );
 	return 0;
-} //end function main
+} //end main

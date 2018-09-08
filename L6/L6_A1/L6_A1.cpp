@@ -1,14 +1,17 @@
 //2017.12.26, L6_A.pdf, Assignment 1, simplified WeChat Red Packet preparing program
+
 #include <iostream>
 #include <ctime>
 #include <iomanip>
 using namespace std;
 
+/* This class contains functions for preparing WeChat red packets. */
 class WeChatRedPacket
 {
-	int judgeSEL( char SEL ) //SEL is the abbreviation of select or selection
+	/* Determine if the user gives up. */
+	int ProcessSelection( char selection )
 	{
-		switch( SEL )
+		switch( selection )
 		{
 		case 'Y':
 		case 'y':
@@ -20,103 +23,106 @@ class WeChatRedPacket
 			return -1;
 			break;
 			
-		default: //execute if the user enters one character which is an unspecified one
+		//execute if the user enters one character which is an unspecified one
+		default:
 			cout << "Error! There is no such selection." << endl;
 			return -1;
 		} //end switch-case
-	} //end function judgeSEL
+	} //end function ProcessSelection
 
-	void outputRSLT( int people, double USR[] ) //RSLT and USR are respectively the abbreviations of result and user
+	/* Print each user's index and money received. */
+	void OutputResult( int people, double user[] )
 	{
 		cout << "The result:\n"
 			 << "User  Money (Unit: RMB)" << endl;
 		cout.setf( ios::fixed );
 
-		for (int CNT = 0; CNT < people; CNT++)
-		/* loop to print each user's index and money received with a clear layout;
-		   CNT is the abbreviation of counter */
+		//loop to print each user's index and money received with a clear layout
+		for (int counter = 0; counter < people; counter++)
 		{
-			USR[ CNT ] /= 100; //reduce by 100 times to get the actual money received
+			user[ counter ] /= 100; //reduce by 100 times to get the actual money received
 			
-			cout << setw( 4 ) << CNT + 1 << setw( 19 ) << setprecision( 2 ) << USR[ CNT ] << endl;
+			cout << setw( 4 ) << counter + 1 << setw( 19 ) << setprecision( 2 ) << user[ counter ] << endl;
 		} //end for
-	} //end function outputRSLT
+	} //end function OutputResult
 
 public:
-	int CHKinput( int people, double MONY ) //CHK and MONY are respectively the abbreviations of check and money
+	/* Check the input. */
+	int CheckInput( int people, double money )
 	{
-		char SEL;
+		char selection;
 		
-		if( ( people >= 1 ) && ( MONY >= people * 0.01 ) ) //check if the input is legal
+		//check if the input is legal
+		if( ( people >= 1 ) && ( money >= people * 0.01 ) )
 			return 0;
 		else if( people < 1 )
 		{
 			cout << "\nError! Illegal input for the quantity of people.\n"
 				 << "Do you want to enter again? (Y/N)  ";
-			cin >> SEL;
+			cin >> selection;
 
-			return judgeSEL( SEL ); //call the specified function to determine if the user gives up
+			return ProcessSelection( selection ); //call the specified function to determine if the user gives up
 		}
 		else
 		{
 			cout << "\nError! Each person should receive at least 0.01 RMB.\n"
 				 << "Do you want to enter again? (Y/N)  ";
-			cin >> SEL;
+			cin >> selection;
 
-			return judgeSEL( SEL ); //call the specified function to determine if the user gives up
+			return ProcessSelection( selection ); //call the specified function to determine if the user gives up
 		} //end nested if...else
-	} //end function CHKinput
+	} //end function CheckInput
 
-	void prepareRedPacket( int people, double MONY )
+	/* Prepare red packets. */
+	void PrepareRedPacket( int people, double money )
 	{
-		double RMNG_MONY = MONY * 100;
-		/* the value of "MONY" is increased to 100 times so as to reduce the error of floating-point type;
-		   RMNG is the abbreviation of remaining */
-		double *USR = new double[ people ];
-		//use a pointer to create a dynamic array named USR for storing each user's money received
+		double remainingMoney = money * 100; //the value of the variable "money" is increased to 100 times so as to reduce the error of floating-point type
+		double *user = new double[ people ]; //use a pointer to create a dynamic array named user for storing each user's money received
 
-		for( int CNT = 0; CNT < people; CNT++ )
+		for( int counter = 0; counter < people; counter++ )
 		{
-			USR[ CNT ] = 1; //each person should receive at least 0.01 RMB
-			RMNG_MONY -= 1;
+			user[ counter ] = 1; //each person should receive at least 0.01 RMB
+			remainingMoney -= 1;
 		} //end for
 
-		while( RMNG_MONY > 0 ) //loop until there is no remaining money
+		 //loop until there is no remaining money
+		while( remainingMoney > 0 )
 		{
-			USR[ rand() % people ] += 1; //a random user receives another 0.01 RMB
-			RMNG_MONY -= 1;
+			user[ rand() % people ] += 1; //a random user receives another 0.01 RMB
+			remainingMoney -= 1;
 		} //end while
 
-		outputRSLT( people, USR ); //call the specified function to print each user's index and money received
+		OutputResult( people, user ); //call the specified function to print each user's index and money received
 
-		delete[] USR; //delete the dynamic array to release memory
-	} //end function prepareRedPacket
+		delete[] user; //delete the dynamic array to release memory
+	} //end function PrepareRedPacket
 }; //end class WeChatRedPacket
 
 int main()
 {
-	WeChatRedPacket test; //create a WeChatRedPacket object and assign it to "test"
+	WeChatRedPacket account; //create a WeChatRedPacket object and assign it to "account"
 
 	int run = 1, people;
-	double MONY;
+	double money;
 
 	srand( time( NULL ) );
 
-	while( run == 1 ) //loop until the input is legal (run = 0) or the user gives up (run = -1)
+	//loop until the input is legal (run = 0) or the user gives up (run = -1)
+	while( run == 1 )
 	{
 		cout << "Enter the quantity of people snatching red packets: ";
 		cin >> people;
 		cout << "Enter the total amount of money in red packets (unit: RMB): ";
-		cin >> MONY;
+		cin >> money;
 
-		run = test.CHKinput( people, MONY ); //call the specified function in class WeChatRedPacket to check the input
+		run = account.CheckInput( people, money ); //call the specified function in class WeChatRedPacket to check the input
 
 		cout << endl;
 	} //end while
 
 	if( run == 0 )
-		test.prepareRedPacket( people, MONY ); //call the specified function in class WeChatRedPacket to prepare red packets
+		account.PrepareRedPacket( people, money ); //call the specified function in class WeChatRedPacket to prepare red packets
 
 	system( "Pause" );
 	return 0;
-} //end function main
+} //end main

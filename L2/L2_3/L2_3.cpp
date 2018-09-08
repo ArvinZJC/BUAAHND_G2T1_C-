@@ -1,4 +1,5 @@
 //2017.12.12, L2.pdf, P83, program that generates some random numbers
+
 #include <iostream>
 #include <ctime>
 using namespace std;
@@ -19,4 +20,4 @@ int main()
 
 	system( "Pause" );
 	return 0;
-} //end function main
+} //end main

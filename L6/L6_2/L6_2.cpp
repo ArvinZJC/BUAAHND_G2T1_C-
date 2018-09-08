@@ -1,41 +1,45 @@
 //2017.12.26, L6.pdf, P30, program that decides if the integer entered is a narcissistic number
+
 #include <iostream>
 #include <cmath>
 using namespace std;
 
-bool isNarcissisticNum( int num ) //num is the abbreviation of number
+/* Decide if the integer entered is a narcissistic number. */
+bool isNarcissisticNumber( int number )
 {
-	int units, tens, hundreds, tot; //tot is the abbreviation of total
+	int units, tens, hundreds, total;
 
-	units = num % 10;
-	tens = ( num / 10 ) % 10;
-	hundreds = ( num / 100 ) % 10;
-	tot = pow( units, 3 ) + pow( tens, 3 ) + pow( hundreds, 3 );
+	units = number % 10;
+	tens = ( number / 10 ) % 10;
+	hundreds = ( number / 100 ) % 10;
+	total = pow( units, 3 ) + pow( tens, 3 ) + pow( hundreds, 3 );
 
-	if( tot == num )
+	if( total == number )
 		return true;
 	else
 		return false;
-} //end function isNarcissisticNum
+} //end function isNarcissisticNumber
 
 int main()
 {
-	int num;
+	int number;
 
 	cout << "Enter an integer between 100 and 999: ";
-	cin >> num;
+	cin >> number;
 
-	while( num < 100 || num > 999 ) //loop until a proper 3-digit integer is entered
+	//loop until a proper 3-digit integer is entered
+	while( number < 100 || number > 999 )
 	{
 		cout << "Error! Please enter again: ";
-		cin >> num;
+		cin >> number;
 	} //end while
 
-	if( isNarcissisticNum( num ) ) //call the specified function to decide if the integer entered is a narcissistic number
-		cout << "\n" << num << " is a narcissistic number." << endl;
+	//call the specified function to decide if the integer entered is a narcissistic number
+	if( isNarcissisticNumber( number ) )
+		cout << "\n" << number << " is a narcissistic number." << endl;
 	else
-		cout << "\n" << num << " is not a narcissistic number." << endl;
+		cout << "\n" << number << " is not a narcissistic number." << endl;
 
 	system( "Pause" );
 	return 0;
-} //end function main
+} //end main

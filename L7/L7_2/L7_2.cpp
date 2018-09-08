@@ -1,23 +1,26 @@
-//2017.12.28, program that catogories the input
+//2017.12.28, program that categories the input
+
 #include <iostream>
 #include <regex>
 using namespace std;
 
+/* This class contains functions for categoring the input. */
 class Dictionary
 {
 public:
-	bool isTelNum( string input ) //tel and num are the abbreviations of telephone and number
+	/* Determine if the input is a telephone number. */
+	bool IsTelNumber( string input )
 	{
-		regex pattern( "010-\\d{8}" );
-		//telephone number: 010-(8 numbers);
+		regex pattern( "010-\\d{8}" ); //telephone number: 010-(8 numbers);
 
 		if( regex_match( input, pattern ) )
 			return true;
 		else
 			return false;
-	} //end function isTelNum
+	} //end function IsTelNumber
 
-	bool isMobileNum( string input )
+	/* Determine if the input is a mobile number. */
+	bool IsMobileNumber( string input )
 	{
 		regex pattern( "010-\\d{11}" ); //mobile number: 010-(11 numbers)
 
@@ -25,20 +28,21 @@ public:
 			return true;
 		else
 			return false;
-	} //end function isMobileNum
+	} //end function IsMobileNumber
 
-	bool isEmail( string input )
+	/* Determine if the input is an email address. */
+	bool IsEmail( string input )
 	{
-		regex pattern( "\\w+@\\w+(\\.(\\w+))+" );
-		//email: (1 or more letters)@(1 or more letters)(1 or more ".(1 or more letters)")
+		regex pattern( "\\w+@\\w+(\\.(\\w+))+" ); //email: (1 or more letters)@(1 or more letters)(1 or more ".(1 or more letters)")
 
 		if( regex_match( input, pattern ) )
 			return true;
 		else
 			return false;
-	} //end function isEmail
+	} //end function IsEmail
 
-	bool isNum( string input )
+	/* Determine if the input is only numbers. */
+	bool isNumbers( string input )
 	{
 		regex pattern( "[0-9]+" ); //only numbers
 
@@ -46,9 +50,10 @@ public:
 			return true;
 		else
 			return false;
-	} //end function isNum
+	} //end function isNumbers
 
-	bool isUppercaseLTR( string input ) //LTR is the abbreviation of letter
+	/* Determine if the input is only uppercase letters. */
+	bool IsUppercaseLetters( string input )
 	{
 		regex pattern( "[A-Z]+" ); //only uppercase letters
 
@@ -56,9 +61,10 @@ public:
 			return true;
 		else
 			return false;
-	} //end function isUppercaseLTR
+	} //end function IsUppercaseLetters
 
-	bool isLowercaseLTR( string input )
+	/* Determine if the input is only lowercase letters. */
+	bool IsLowercaseLetters( string input )
 	{
 		regex pattern( "[a-z]+" ); //only lowercase letters
 
@@ -66,9 +72,10 @@ public:
 			return true;
 		else
 			return false;
-	} //end function isLowercaseLTR
+	} //end function IsLowercaseLetters
 
-	bool isLTR( string input )
+	/* Determine if the input is only letters. */
+	bool IsLetters( string input )
 	{
 		regex pattern( "[A-Za-z]+" ); //only letters
 
@@ -76,9 +83,10 @@ public:
 			return true;
 		else
 			return false;
-	} //end function isLTR
+	} //end function IsLetters
 
-	bool isLTR_Num( string input )
+	/* Determine if the input is only letters and/or numbers. */
+	bool IsLettersAndOrNumbers( string input )
 	{
 		regex pattern( "[A-Za-z0-9]+" ); //only letters and/or numbers
 
@@ -86,12 +94,12 @@ public:
 			return true;
 		else
 			return false;
-	} //end function isLTR_Num
+	} //end function IsLettersAndOrNumbers
 }; //end class Dictionary
 
 int main()
 {
-	Dictionary test; //create a Dictionary object and assign it to "test"
+	Dictionary user; //create a Dictionary object and assign it to "user"
 
 	string input;
 	
@@ -111,23 +119,23 @@ int main()
 	cout << "\nThe category of the input: ";
 
 	//call the specified functions in class Dictionary to category the input
-	if( ! ( test.isTelNum( input ) || test.isMobileNum( input ) || test.isEmail( input ) || test.isLTR_Num( input ) ) )
+	if( ! ( user.IsTelNumber( input ) || user.IsMobileNumber( input ) || user.IsEmail( input ) || user.IsLettersAndOrNumbers( input ) ) )
 		cout << "I" << endl;
-	else if( test.isTelNum( input ) )
+	else if( user.IsTelNumber( input ) )
 		cout << "A" << endl;
-	else if( test.isMobileNum( input ) )
+	else if( user.IsMobileNumber( input ) )
 		cout << "B" << endl;
-	else if( test.isEmail( input ) )
+	else if( user.IsEmail( input ) )
 		cout << "C" << endl;
 	else
 	{
-		if( ! ( test.isNum( input ) || test.isLTR( input ) ) ) 
+		if( ! ( user.isNumbers( input ) || user.IsLetters( input ) ) ) 
 			cout << "H" << endl;
-		else if( test.isNum( input ) )
+		else if( user.isNumbers( input ) )
 			cout << "D" << endl;
-		else if( test.isUppercaseLTR( input ) )
+		else if( user.IsUppercaseLetters( input ) )
 			cout << "E" << endl;
-		else if( test.isLowercaseLTR( input ) )
+		else if( user.IsLowercaseLetters( input ) )
 			cout << "F" << endl;
 		else
 			cout << "G" << endl;
@@ -135,4 +143,4 @@ int main()
 
 	system( "Pause" );
 	return 0;
-} //end function main
+} //end main

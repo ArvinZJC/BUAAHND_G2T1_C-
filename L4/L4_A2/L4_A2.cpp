@@ -1,149 +1,164 @@
 //2017.12.19, L4_A.pdf, Assignment 2, arithmetic learning program for primary students
+
 #include <iostream>
 #include <ctime>
 #include <iomanip>
 using namespace std;
 
-int num1 = 50, num2 = 51, RSLT, totCNT = 0, correctCNT = 0;
-/* declare global variables and initialise most of them;
-   num, RSLT, tot and CNT are respectively the abbreviations of number, result, total and counter */
+int number1 = 50, number2 = 51, result, totalCounter = 0, correctCounter = 0; //declare global variables and initialise most of them
 
-void Add() //Add is the abbreviation of addition
+/* Generate 5 addition exercises. */
+void Addition()
 {
-	for( int CNT = 1; CNT <= 5; CNT++ )
+	//loop to generate 5 exercises
+	for( int counter = 1; counter <= 5; counter++ )
 	{		
-		while( num1 + num2 > 100 ) //loop to generate 2 proper numbers for an exercise
+		//loop to generate 2 proper numbers for an exercise
+		while( number1 + number2 > 100 )
 		{
-			num1 = rand() % 101; //pick a random integer between 0 and 100
-			num2 = rand() % 101; //pick a random integer between 0 and 100
+			number1 = rand() % 101; //pick a random integer between 0 and 100
+			number2 = rand() % 101; //pick a random integer between 0 and 100
 		} //end while
 		
-		cout << "Excercise " << CNT << ": " << num1 << " + " << num2 << " = ";
-		cin >> RSLT;
+		cout << "Excercise " << counter << ": " << number1 << " + " << number2 << " = ";
+		cin >> result;
 
-		if( RSLT == num1 + num2 ) //judge if the user's answer is correct
+		//judge if the user's answer is correct
+		if( result == number1 + number2 )
 		{
 			cout << setw( 23 ) << "Brilliant!" << endl;
 
-			correctCNT++;
+			correctCounter++;
 		}
 		else
 			cout << setw( 29 ) << "Wrong! Come on!\n" 
-			     << setw( 13 ) << " " << "(Key: " << num1 + num2 << ")" << endl;
+			     << setw( 13 ) << " " << "(Key: " << number1 + number2 << ")" << endl;
 
-		totCNT++;
-		num1 = 50, num2 = 51; //initialise to ensure a proper generation of the next exercise
+		totalCounter++;
+		number1 = 50, number2 = 51; //initialise to ensure a proper generation of the next exercise
 	} //end for
-} //end function Add
+} //end function Addition
 
-void Sub() //Sub is the abbreviation of subtraction
+/* Generate 5 subtraction exercises. */
+void Subtraction()
 {
-	for( int CNT = 1; CNT <= 5; CNT++ ) //loop to generate 5 exercises
+	//loop to generate 5 exercises
+	for( int counter = 1; counter <= 5; counter++ )
 	{		
-		while( num1 - num2 < 0 ) //loop to generate 2 proper numbers for an exercise
+		//loop to generate 2 proper numbers for an exercise
+		while( number1 - number2 < 0 )
 		{
-			num1 = rand() % 101; //pick a random integer between 0 and 100
-			num2 = rand() % 101; //pick a random integer between 0 and 100
+			number1 = rand() % 101; //pick a random integer between 0 and 100
+			number2 = rand() % 101; //pick a random integer between 0 and 100
 		} //end while
 
-		cout << "Excercise " << CNT << ": " << num1 << " - " << num2 << " = ";
-		cin >> RSLT;
+		cout << "Excercise " << counter << ": " << number1 << " - " << number2 << " = ";
+		cin >> result;
 
-		if( RSLT == num1 - num2 ) //judge if the user's answer is correct
+		//judge if the user's answer is correct
+		if( result == number1 - number2 )
 		{
 			cout << setw( 23 ) << "Brilliant!" << endl;
 
-			correctCNT++;
+			correctCounter++;
 		}
 		else
 			cout << setw( 29 ) << "Wrong! Come on!\n"
-				 << setw( 13 ) << " " << "(Key: " << num1 - num2 << ")" << endl;
+				 << setw( 13 ) << " " << "(Key: " << number1 - number2 << ")" << endl;
 
-		totCNT++;
-		num1 = 50, num2 = 51; //initialise to ensure a proper generation of the next exercise
+		totalCounter++;
+		number1 = 50, number2 = 51; //initialise to ensure a proper generation of the next exercise
 	} //end for
-} //end function Sub
+} //end function Subtraction
 
-void Mul() //Mul is the abbreviation of multiplication
+/* Generate 5 multiplication exercises. */
+void Multiplication()
 {
-	for( int CNT = 1; CNT <= 5; CNT++ ) //loop to generate 5 exercises
+	//loop to generate 5 exercises
+	for( int counter = 1; counter <= 5; counter++ )
 	{
-		while( num1 * num2 > 100 ) //loop to generate 2 proper numbers for an exercise
+		//loop to generate 2 proper numbers for an exercise
+		while( number1 * number2 > 100 )
 		{
-			num1 = rand() % 101; //pick a random integer between 0 and 100
-			num2 = rand() % 101; //pick a random integer between 0 and 100
+			number1 = rand() % 101; //pick a random integer between 0 and 100
+			number2 = rand() % 101; //pick a random integer between 0 and 100
 		} //end while
 		
-		cout << "Excercise " << CNT << ": " << num1 << " ¡Á " << num2 << " = ";
-		cin >> RSLT;
+		cout << "Excercise " << counter << ": " << number1 << " ¡Á " << number2 << " = ";
+		cin >> result;
 
-		if( RSLT == num1 * num2 ) //judge if the user's answer is correct
+		//judge if the user's answer is correct
+		if( result == number1 * number2 )
 		{
 			cout << setw( 23 ) << "Brilliant!" << endl;
 
-			correctCNT++;
+			correctCounter++;
 		}
 		else
 			cout << setw( 29 ) << "Wrong! Come on!\n"
-				 << setw( 13 ) << " " << "(Key: " << num1 * num2 << ")" << endl;
+				 << setw( 13 ) << " " << "(Key: " << number1 * number2 << ")" << endl;
 
-		totCNT++;
-		num1 = 50, num2 = 51; //initialise to ensure a proper generation of the next exercise
+		totalCounter++;
+		number1 = 50, number2 = 51; //initialise to ensure a proper generation of the next exercise
 	} //end for
-} //end function Mul
+} //end function Multiplication
 
-void Div() //Div is the abbreviation of division
+/* Generate 5 division exercises. */
+void Division()
 {
-	for( int CNT = 1; CNT <= 5; CNT++ ) //loop to generate 5 exercises
+	//loop to generate 5 exercises
+	for( int counter = 1; counter <= 5; counter++ )
 	{
-		while( num1 % num2 != 0 ) //loop to generate 2 proper numbers for an exercise
+		//loop to generate 2 proper numbers for an exercise
+		while( number1 % number2 != 0 )
 		{
-			num1 = 1 + rand() % 100; //pick a random integer between 1 and 100
-			num2 = 1 + rand() % 100; //pick a random integer between 1 and 100
+			number1 = 1 + rand() % 100; //pick a random integer between 1 and 100
+			number2 = 1 + rand() % 100; //pick a random integer between 1 and 100
 		} //end while
 
-		cout << "Excercise " << CNT << ": " << num1 << " ¡Â " << num2 << " = ";
-		cin >> RSLT;
+		cout << "Excercise " << counter << ": " << number1 << " ¡Â " << number2 << " = ";
+		cin >> result;
 
-		if( RSLT == num1 / num2 ) //judge if the user's answer is correct
+		//judge if the user's answer is correct
+		if( result == number1 / number2 )
 		{
 			cout << setw( 23 ) << "Brilliant!" << endl;
 
-			correctCNT++;
+			correctCounter++;
 		}
 		else
 			cout << setw( 29 ) << "Wrong! Come on!\n"
-				 << setw( 13 ) << " " << "(Key: " << num1 / num2 << ")" << endl;
+				 << setw( 13 ) << " " << "(Key: " << number1 / number2 << ")" << endl;
 
-		totCNT++;
-		num1 = 50, num2 = 51; //initialise to ensure a proper generation of the next exercise
+		totalCounter++;
+		number1 = 50, number2 = 51; //initialise to ensure a proper generation of the next exercise
 	} //end for
-} //end function Div
+} //end function Division
 
-void outputReport()
+/* Output the report. */
+void OutputReport()
 {
-	if( totCNT == 0 )
+	if( totalCounter == 0 )
 		cout << "No accuracy data because no exercise is done." << endl;
 	else
 	{
-		double accuracy = ( double )correctCNT * 100 / totCNT;
-		//calculate the accuracy after doing some exercises
+		double accuracy = ( double )correctCounter * 100 / totalCounter; //calculate the accuracy after doing some exercises
 
 		cout.setf(ios::fixed);
 		cout << "Report:\n"
-			 << "  You have finished " << totCNT << " exercises.\n"
-			 << "  " << correctCNT << " of them is/are correctly done.\n"
+			 << "  You have finished " << totalCounter << " exercises.\n"
+			 << "  " << correctCounter << " of them is/are correctly done.\n"
 			 << "  Therefore, your accuracy is " << setprecision(2) << accuracy << "%." << endl;
 	} //end if...else
-} //end function outputReport
+} //end function OutputReport
 
 int main()
 {
-	char SEL = '0'; //SEL is the abbreviation of selection
+	char selection = '0';
 
 	srand( time( NULL ) );
 
-	while( ( SEL != 'Q' ) || ( SEL != 'q' ) )
+	while( ( selection != 'Q' ) || ( selection != 'q' ) )
 	{
 		cout << "  A: addition\n"
 			 << "  B: subtraction\n"
@@ -153,49 +168,50 @@ int main()
 			 << "*******************************************************\n"
 		 	 //these asterisks are used for a better layout
 		     << "Enter your selection (A/B/C/D/Q, the lowercase letter also accepted): ";
-		cin >> SEL;
+		cin >> selection;
 		cout << endl;
 		
-		switch( SEL )
+		switch( selection )
 		{
 		case 'A':
 		case 'a':
-			Add(); //call the specified function for 5 addition exercises
+			Addition(); //call the specified function for 5 addition exercises
 			system( "Pause" );
 			system( "cls" );
 			break;
 
 		case 'B':
 		case 'b':
-			Sub(); //call the specified function for 5 subtraction exercises
+			Subtraction(); //call the specified function for 5 subtraction exercises
 			system( "Pause" );
 			system( "cls" );
 			break;
 
 		case 'C':
 		case 'c':
-			Mul(); //call the specified function for 5 multiplication exercises
+			Multiplication(); //call the specified function for 5 multiplication exercises
 			system( "Pause" );
 			system( "cls" );
 			break;
 
 		case 'D':
 		case 'd':
-			Div(); //call the specified function for 5 division exercises
+			Division(); //call the specified function for 5 division exercises
 			system( "Pause" );
 			system( "cls" );
 			break;
 
 		case 'Q':
 		case 'q':
-			outputReport();
+			OutputReport(); //call the specified function to output the report
 			system( "Pause" );
 			return 0;
 
-		default: //execute if the user enters one character which is an unspecified one
+		//execute if the user enters one character which is an unspecified one
+		default:
 			cout << "Error! There is no such selection." << endl;
 			system( "Pause" );
 			system( "cls" );
 		} //end switch-case
 	} //end while
-} //end function main
+} //end main

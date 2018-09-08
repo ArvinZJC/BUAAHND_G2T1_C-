@@ -1,66 +1,68 @@
 //2017.12.22, L5_A.pdf, Assignment 2, program that finds out the index of the person left in a game
+
 #include <iostream>
 using namespace std;
 
 int people;
 
-void indexOfRmngPERS() //Rmng and PERS are respectively the abbreviations of remaining and person
+/* Find out the index of the remaining person. */
+void RemainingPersonIndex()
 {
-	int num = 0, RMNGpeople = people;
-	/* "num" is uesd to record the number 1, 2 or 3 counted;
-	   num and RMNG are respectively the abbreviations of number and remaining */
-	bool *PERS = new bool[ people + 1 ];
-	//use a pointer to create a dynamic array named PERS for storing each person's status
+	int number = 0, remainingPeople = people;
+	bool *person = new bool[ people + 1 ]; //use a pointer to create a dynamic array named person for storing each person's status
 
-	for( int CNT = 1; CNT < people + 1; CNT++ )
-	/* loop to initialise each array element with "true";
-	   PERS[ 0 ] is not used to make it more convenient to express each person's index;
-	   CNT is the abbreviation of counter */
-		PERS[ CNT ] = true; //the status "false" represents the person exits
+	/* loop to initialise each array element with "true"
+	   person[ 0 ] is not used to make it more convenient to express each person's index */
+	for( int counter = 1; counter < people + 1; counter++ )
+		person[ counter ] = true; //the status "false" represents the person exits
 
-	while( RMNGpeople > 1 ) //loop until there is one remaining person
+	//loop until there is one remaining person
+	while( remainingPeople > 1 )
 	{
-		for( int CNT = 1; CNT < people + 1; CNT++ ) //loop to find out those who exit
+		//loop to find out those who exit
+		for( int counter = 1; counter < people + 1; counter++ )
 		{
-			if( PERS[ CNT ] )
+			if( person[ counter ] )
 			{
-				num++;
+				number++;
 
-				if( num == 3 )
+				if( number == 3 )
 				{
-					num = 0;
-					PERS[ CNT ] = false;
-					RMNGpeople--;
+					number = 0;
+					person[ counter ] = false;
+					remainingPeople--;
 				} //end if
 			} //end if
 		} //end for
 	} //end while
 
-	for( int CNT = 1; CNT < people + 1; CNT++ ) //loop to find out the index of the remaining person
+	//loop to find out the index of the remaining person
+	for( int counter = 1; counter < people + 1; counter++ )
 	{
-		if( PERS[ CNT ] )
+		if( person[ counter ] )
 		{
-			cout << "The index of the remaining person: " << CNT << endl;
+			cout << "The index of the remaining person: " << counter << endl;
 			break;
 		} //end if
 	} //end for
 
-	delete[] PERS; //delete the dynamic array to release memory
-} //end function indexOfRmngPERS
+	delete[] person; //delete the dynamic array to release memory
+} //end function RemainingPersonIndex
 
 int main()
 {
 	cout << "Enter an integer no less than 2 for the number of people in a circle: ";
 	cin >> people;
 
-	while( people < 2 ) //loop until a proper integer is entered
+	//loop until a proper integer is entered
+	while( people < 2 )
 	{
 		cout << "Error! Please enter again: ";
 		cin >> people;
 	} //end while
 
-	indexOfRmngPERS(); //call the specified function to find out the index of the remaining person
+	RemainingPersonIndex(); //call the specified function to find out the index of the remaining person
 
 	system( "Pause" );
 	return 0;
-} //end function main
+} //end main
