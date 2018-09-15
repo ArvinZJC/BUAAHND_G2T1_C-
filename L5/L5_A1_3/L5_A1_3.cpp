@@ -42,15 +42,13 @@ void Decrypt( int numberCode )
 	//loop to encrypt the 5-digit number code
 	for( int counter = 0; counter < 5; counter++ )
 	{
-		{
-			number[counter] = numberCode % 10;
-			numberCode /= 10;
-		} //store the 5-digit number code encrypted in the array named number in reverse order
+		//store the 5-digit number code encrypted in the array named number in reverse order
+		number[counter] = numberCode % 10;
+		numberCode /= 10;
 		
-		{
-			number[counter] += 5;
-			number[counter] %= 10;
-		} //decrypt each number using the formula "( x + 5 ) % 10"
+		//decrypt each number using the formula "( x + 5 ) % 10"
+		number[counter] += 5;
+		number[counter] %= 10;
 
 		cout << number[ counter ];
 	} //end for

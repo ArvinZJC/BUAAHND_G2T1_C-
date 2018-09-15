@@ -258,8 +258,7 @@ int main()
 			 << "  C: delete an integer\n"
 			 << "  D: search an integer\n"
 			 << "  Q: quit\n"
-		     << "*******************************************************\n"
-		     //these asterisks are used for a better layout
+		     << "*******************************************************\n" //these asterisks are used for a better layout
 		     << "Enter your selection (A/B/C/D/Q, the lowercase letter also accepted): ";
 
 		selection = user.ProcessSelectionEntered(); //call the specified function in class ProcessSequenceOfIntegers to get a specified character

@@ -9,21 +9,19 @@ void Decrypt( int numberCode )
 {
 	int units, tens, hundreds, thousands, tenThousands, a, b, c, d, e;
 
-	{
-		units = numberCode % 10;
-		tens = ( numberCode / 10 ) % 10;
-		hundreds = ( numberCode / 100 ) % 10;
-		thousands = ( numberCode / 1000 ) % 10;
-		tenThousands = ( numberCode / 10000 ) % 10;
-	} //get the number of each digit in the integer (including 0 filled) from right to left
+	//get the number of each digit in the integer (including 0 filled) from right to left
+	units = numberCode % 10;
+	tens = ( numberCode / 10 ) % 10;
+	hundreds = ( numberCode / 100 ) % 10;
+	thousands = ( numberCode / 1000 ) % 10;
+	tenThousands = ( numberCode / 10000 ) % 10;
 
-	{
-		a = ( units + 5 ) % 10;
-		b = ( tens + 5 ) % 10;
-		c = ( hundreds + 5 ) % 10;
-		d = ( thousands + 5 ) % 10;
-		e = ( tenThousands + 5 ) % 10;
-	} //decrypt each number using the formula "( x + 5 ) % 10"
+	//decrypt each number using the formula "( x + 5 ) % 10"
+	a = ( units + 5 ) % 10;
+	b = ( tens + 5 ) % 10;
+	c = ( hundreds + 5 ) % 10;
+	d = ( thousands + 5 ) % 10;
+	e = ( tenThousands + 5 ) % 10;
 
 	cout << "Your number code decrypted: " << a << b << c << d << e << endl;
 } //end function Decrypt

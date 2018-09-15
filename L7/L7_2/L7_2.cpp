@@ -112,8 +112,7 @@ int main()
 		 << "G. only uppercase and lowercase letters\n"
 		 << "H. only letters and numbers\n"
 		 << "I. none of above\n" 
-		 << "*******************************************************\n"
-		//these asterisks are used for a better layout
+		 << "*******************************************************\n" //these asterisks are used for a better layout
 		 << "Enter a string: ";
 	cin >> input;
 	cout << "\nThe category of the input: ";

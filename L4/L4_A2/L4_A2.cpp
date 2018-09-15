@@ -165,8 +165,7 @@ int main()
 			 << "  C: multiplication\n"
 			 << "  D: division\n"
 			 << "  Q: quit\n"
-			 << "*******************************************************\n"
-		 	 //these asterisks are used for a better layout
+			 << "*******************************************************\n" //these asterisks are used for a better layout
 		     << "Enter your selection (A/B/C/D/Q, the lowercase letter also accepted): ";
 		cin >> selection;
 		cout << endl;
