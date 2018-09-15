@@ -12,13 +12,19 @@ int main()
 	
 	ifstream fileRead( fileName );
 
-	//stop looping when no more characters can be read
-	while( getline( fileRead, content ) )
-		line++;
+	//execute if the file is successfully read
+	if( fileRead.is_open() )
+	{
+		//stop looping when no more characters can be read
+		while( getline( fileRead, content ) )
+			line++;
 
-	cout << "The number of lines of the content in \"" << fileName << "\": " << line << endl;
+		cout << "The number of lines of the content in \"" << fileName << "\": " << line << endl;
 
-	fileRead.close(); //close the file currently associated with the stream to avoid resource leak
+		fileRead.close(); //close the file currently associated with the stream to avoid resource leak
+	}
+	else
+		cout << "The file is not successfully read." << endl;
 	
 	system( "Pause" );
 	return 0;

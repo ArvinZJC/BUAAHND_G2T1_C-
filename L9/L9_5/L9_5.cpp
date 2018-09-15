@@ -11,12 +11,18 @@ int main()
 
 	ifstream fileRead( fileName );
 
-	fileRead.seekg( -3, ios::end ); //set the position of the pointer to the first of the last 3 characters
+	//execute if the file is successfully read
+	if( fileRead.is_open() )
+	{
+		fileRead.seekg( -3, ios::end ); //set the position of the pointer to the first of the last 3 characters
 
-	getline( fileRead, content );
-	cout << "The last 3 characters of \"" << fileName << "\": " << content << endl;
+		getline( fileRead, content );
+		cout << "The last 3 characters of \"" << fileName << "\": " << content << endl;
 
-	fileRead.close(); //close the file currently associated with the stream to avoid resource leak
+		fileRead.close(); //close the file currently associated with the stream to avoid resource leak
+	}
+	else
+		cout << "The file is not successfully read." << endl;
 
 	system( "Pause" );
 	return 0;

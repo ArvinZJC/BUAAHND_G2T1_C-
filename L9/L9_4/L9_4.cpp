@@ -11,17 +11,23 @@ int main()
 
 	fstream file( fileName, ios::in | ios::out );
 
-	file << "This i";
+	//execute if the file is successfully read
+	if( file.is_open() )
+	{
+		file << "This i";
 
-	file.seekg( 0, ios::beg ); //set the position of the pointer back to the beginning
+		file.seekg( 0, ios::beg ); //set the position of the pointer back to the beginning
 
-	cout << "The content of \"" << fileName << "\" after overriding:" << endl;
-	
-	//stop looping when no more characters can be read
-	while( getline( file, content ) )
-		cout << content << endl;
+		cout << "The content of \"" << fileName << "\" after overriding:" << endl;
 
-	file.close(); //close the file currently associated with the stream to avoid resource leak
+		//stop looping when no more characters can be read
+		while( getline( file, content ) )
+			cout << content << endl;
+
+		file.close(); //close the file currently associated with the stream to avoid resource leak
+	}
+	else
+		cout << "The file is not successfully read." << endl;
 
 	system( "Pause" );
 	return 0;
