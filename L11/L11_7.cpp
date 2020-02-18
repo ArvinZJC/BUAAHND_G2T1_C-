@@ -17,6 +17,5 @@ int main()
 	else
 		cout << "Memory allocation failed. Ending program." << endl;
 
-	system("Pause");
 	return 0;
 } // end main

@@ -15,6 +15,5 @@ int main()
 	cout << "\nInput stored using the pointer \"pAge\" at 0x" << hex << pAge << "." // display the value of the pointer
 		 << "\nDog's age: " << dec << dogAge << endl;
 
-	system("Pause");
 	return 0;
 } // end main

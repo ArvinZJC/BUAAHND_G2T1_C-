@@ -16,6 +16,5 @@ int main()
 		 << "reference2 = " << dec << reference2
 		 << "\nThe reference \"reference2\" is at 0x" << hex << &reference2 << "." << endl;
 
-	system("Pause");
 	return 0;
 } // end main

@@ -32,6 +32,5 @@ calculator:
 		cout << "There is no such selection. Thus, it is automatically regarded as \"N\"." << endl;
 	} // end switch-case
 	
-	system("Pause");
 	return 0;
 } // end main

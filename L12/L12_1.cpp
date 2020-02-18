@@ -18,6 +18,5 @@ int main()
 
 	sample1.Division(); // call the specified method in struct Sample to output the result of dividing the first integer by the second integer with 2 decimal places kept
 
-	system("Pause");
 	return 0;
 } // end main

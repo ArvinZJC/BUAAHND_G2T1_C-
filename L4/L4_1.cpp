@@ -34,6 +34,5 @@ int main()
 	for (int length = 1; length <= number; ++length)
 		cout << setw(number) << "*" << endl;
 
-	system("Pause");
 	return 0;
 } // end main

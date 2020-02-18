@@ -51,6 +51,5 @@ int main()
 		cout << "Bonus (unit: RMB): " << bonus << endl;
 	} // end nested if...else
 	
-	system("Pause");
 	return 0;
 } // end main

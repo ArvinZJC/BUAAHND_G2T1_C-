@@ -42,6 +42,5 @@ int main()
 		cout << "F" << endl;
 	} // end switch-case
 
-	system("Pause");
 	return 0;
 } // end main

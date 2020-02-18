@@ -14,6 +14,5 @@ int main()
 		 << boolalpha << "  a1 = " << a1 << "  a2 = " << a2 << "\n"
 		 << "  a1 && a2 = " << (a1 && a2) << endl;
 
-	system("Pause");
 	return 0;
 } // end main

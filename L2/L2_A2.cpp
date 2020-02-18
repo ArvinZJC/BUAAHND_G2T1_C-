@@ -43,6 +43,5 @@ int main()
 
 	cout << "The random integer is " << guess << "." << endl;
 
-	system("Pause");
 	return 0;
 } // end main

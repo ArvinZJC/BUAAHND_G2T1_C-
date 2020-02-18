@@ -31,6 +31,5 @@ int main()
 
 	cout << "\nAfter processing:\n" << input << endl;
 
-	system("Pause");
 	return 0;
 } // end main

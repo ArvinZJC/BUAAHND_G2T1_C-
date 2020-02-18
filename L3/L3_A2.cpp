@@ -62,7 +62,7 @@ int main()
 		case 'A':
 		case 'a':
 			CalculateTotalCharge(10, 160); // call the specified function to calculate the parking charge for an oversize vehicle
-			system("Pause");
+			system("Pause"); // display the result before clearing the screen
 			system("cls"); // clear the screen
 			break;
 

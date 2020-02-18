@@ -118,7 +118,6 @@ int main()
 	cout << endl;
 
 	test.ProcessInput(input); // call the specified function in class AnalyseGrades to process the input
-
-	system("Pause");
+	
 	return 0;
 } // end main

@@ -10,7 +10,6 @@ int main()
 	/* calculate and print the remainder after 17 is divided by 7;
 	   "%" is the remainder operator */
 	cout << "The remainder after 7 divides 17: " << x % y << endl;
-
-	system("Pause");
+	
 	return 0;
 } // end main

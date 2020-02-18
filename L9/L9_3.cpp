@@ -24,7 +24,6 @@ int main()
 	}
 	else
 		cout << "The file is not successfully read." << endl;
-	
-	system("Pause");
+
 	return 0;
 } // end main

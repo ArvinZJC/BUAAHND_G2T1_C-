@@ -13,7 +13,6 @@ int main()
 		 << "The absolute value of -123.987: " << fabs(c) << "\n" // abs and fabs are functions that return the absolute values of parameters and they are nearly the same in C++
 		 << "20 ^ 2.3 = " << pow(b, d) << "\n" // pow is a function that returns base raised to the power exponent
 		 << "√20 = " << sqrt(b) << endl; // sqrt is a function that returns the square root of a parameter
-
-	system("Pause");
+	
 	return 0;
 } // end main

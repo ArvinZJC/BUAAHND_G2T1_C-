@@ -8,7 +8,5 @@ using std::endl;
 int main()
 {
 	cout << "Hello World!" << endl;
-
-	system("Pause");
 	return 0;
 } // end main

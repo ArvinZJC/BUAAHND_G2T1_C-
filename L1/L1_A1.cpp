@@ -22,6 +22,5 @@ using namespace std;
 	     << "2) the rounding average is " << average << "\n"
 		 << "3) the value of the formula \"√(y * 56.7 + z / x ^ z)\" is " << formula << endl;
 
-	system("Pause");
 	return 0;
 } // end main

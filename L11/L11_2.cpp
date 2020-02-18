@@ -23,6 +23,5 @@ int main()
 		 << "\nsizeof(pDouble) = " << sizeof(pDouble)
 		 << "\nsizeof(pChar) = " << sizeof(pChar) << endl;
 
-	system("Pause");
 	return 0;
 } // end main

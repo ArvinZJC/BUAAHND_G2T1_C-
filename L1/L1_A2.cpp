@@ -23,7 +23,6 @@ int main()
 	formula = sqrt(pow((x - y * z) / (x + z), 2)) / (y * 2 + z * 3) + sin(10) + cos(20); // calculate the value of the format "√((x - y * z) / (x + z) ^ 2) / (2y + 3z) + sin10 + cos20"
 
 	cout << "\nThe value of the formula \"√((x - y * z) / (x + z) ^ 2 ) / (2y + 3z) + sin10 + cos20\": " << formula << endl;
-
-	system("Pause");
+	
 	return 0;
 } // end main

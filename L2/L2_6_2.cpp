@@ -20,7 +20,6 @@ int main()
 		max = number3;
 
 	cout << "The max: " << max << endl;
-
-	system("Pause");
+	
 	return 0;
 } // end main

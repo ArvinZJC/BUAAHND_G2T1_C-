@@ -9,7 +9,5 @@ int main()
 	   features of the C++ Standard Library are declared within the std namespace;
 	   "<<" is the stream insertion operator */
 	std::cout << "Hello World!" << std::endl;
-
-	system("Pause"); // pause the program and diplay "Press any key to continue..."
 	return 0; // return the value 0 to indicate that the program has successfully run
 } // end main

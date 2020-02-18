@@ -175,8 +175,8 @@ int main()
 		case 'A':
 		case 'a':
 			Addition(); // call the specified function for 5 addition exercises
-			system("Pause");
-			system("cls");
+			system("Pause"); // display the result before clearing the screen
+			system("cls"); // clear the screen
 			break;
 
 		case 'B':
@@ -203,7 +203,6 @@ int main()
 		case 'Q':
 		case 'q':
 			OutputReport(); // call the specified function to output the report
-			system("Pause");
 			return 0;
 
 		// execute if the user enters one character which is an unspecified one

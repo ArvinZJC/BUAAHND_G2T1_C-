@@ -63,6 +63,5 @@ int main()
 
 	RemainingPersonIndex(); // call the specified function to find out the index of the remaining person
 
-	system("Pause");
 	return 0;
 } // end main

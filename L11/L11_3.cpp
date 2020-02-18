@@ -30,6 +30,5 @@ int main()
 
 	delete[] pNumbers; // delete the pointer to release memory
 
-	system("Pause");
 	return 0;
 } // end main

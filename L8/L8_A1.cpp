@@ -269,8 +269,8 @@ int main()
 		case 'A':
 		case 'a':
 			user.PrintAllIntegers(); // call the specified function in class ProcessSequenceOfIntegers to print all integers from smallest to largest
-			system("Pause");
-			system("cls");
+			system("Pause"); // display the result before clearing the screen
+			system("cls"); // clear the screen
 			break;
 
 		case 'B':

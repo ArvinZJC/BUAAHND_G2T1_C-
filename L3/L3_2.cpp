@@ -19,6 +19,5 @@ int main()
 	else
 		cout << Year << " is not a leap year." << endl;
 
-	system("Pause");
 	return 0;
 } // end main

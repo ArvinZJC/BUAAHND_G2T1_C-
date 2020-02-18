@@ -27,6 +27,5 @@ int main()
 							 << setw(8) << jujude << endl;
 				} // end for
 
-	system("Pause");
 	return 0;
 } // end main

@@ -42,6 +42,5 @@ int main()
 
 	Encrypt(numberCode); // call the specified function to encrypt the 5-digit number code
 
-	system("Pause");
 	return 0;
 } // end main

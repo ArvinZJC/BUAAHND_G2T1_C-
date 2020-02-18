@@ -18,6 +18,5 @@ int main()
 		 << "2 random numbers between 0 and 1:\n"
 		 << "  " << (double)rand() / RAND_MAX << "\t" << (double) rand() / RAND_MAX << endl;
 
-	system("Pause");
 	return 0;
 } // end main

@@ -139,6 +139,5 @@ int main()
 			cout << "G" << endl;
 	} // end nested if...else
 
-	system("Pause");
 	return 0;
 } // end main

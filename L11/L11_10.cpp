@@ -21,6 +21,5 @@ int main()
 
 	cout << "Square of " << number << ": " << square << endl;
 
-	system("Pause");
 	return 0;
 } // end main

@@ -14,6 +14,5 @@ int main()
 
 	cout << number1 << endl;
 
-	system("Pause");
 	return 0;
 } // end main

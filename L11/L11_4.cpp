@@ -25,6 +25,5 @@ int main()
 
 	cout << "The area of the specified circle: " << area << endl;
 
-	system("Pause");
 	return 0;
 } // end main

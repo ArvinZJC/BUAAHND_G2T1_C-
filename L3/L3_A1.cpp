@@ -38,6 +38,5 @@ int main()
 		cout << "*" << endl;
 	} // end for
 
-	system("Pause");
 	return 0;
 } // end main

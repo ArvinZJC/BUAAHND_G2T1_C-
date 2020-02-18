@@ -44,6 +44,5 @@ int main()
 
 	cout << "\n" << number << "! = " << user.CalculateFactorial(number) << endl; // call the specified function in class Calculator to calculate the factorial
 
-	system("Pause");
 	return 0;
 } // end main

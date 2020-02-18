@@ -21,6 +21,5 @@ int main()
 		delete pTemperature; // delete the pointer to release memory
 	} // end if
 
-	system("Pause");
 	return 0;
 } // end main

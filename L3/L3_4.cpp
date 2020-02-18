@@ -14,7 +14,5 @@ int main()
 	} // end for
 
 	cout << "The sum of integers between 1 and 100 except those that are divisible by 5: " << sum << endl;
-
-	system("Pause");
 	return 0;
 } // end main

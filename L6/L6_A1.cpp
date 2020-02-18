@@ -122,6 +122,5 @@ int main()
 	if (run == 0)
 		account.PrepareRedPacket(people, money); // call the specified function in class WeChatRedPacket to prepare red packets
 
-	system("Pause");
 	return 0;
 } // end main

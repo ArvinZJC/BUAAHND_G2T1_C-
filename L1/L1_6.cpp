@@ -11,6 +11,5 @@ int main()
 	cout.setf(ios::fixed);
 	cout << setprecision(2) << x << endl; // keep 2 decimal places
 
-	system("Pause");
 	return 0;
 } // end main

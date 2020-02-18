@@ -40,6 +40,5 @@ int main()
 	else
 		cout << "\n" << number << " is not a narcissistic number." << endl;
 
-	system("Pause");
 	return 0;
 } // end main

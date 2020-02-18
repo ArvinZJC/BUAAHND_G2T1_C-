@@ -28,6 +28,5 @@ int main()
 	else
 		cout << number1 << " / " << number2 << " = " << (double)number1 / number2 << endl;
 
-	system("Pause");
 	return 0;
 } // end main

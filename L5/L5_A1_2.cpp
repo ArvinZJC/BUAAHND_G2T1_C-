@@ -44,6 +44,5 @@ int main()
 
 	Decrypt(numberCode); // call the specified function to decrypt the 5-digit number code
 
-	system("Pause");
 	return 0;
 } // end main

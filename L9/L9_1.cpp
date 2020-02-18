@@ -25,6 +25,5 @@ int main()
 		 << "\nThe smallest one: " << *min_element(test.begin(), test.end())
 		 << "\nSum: " << accumulate(test.begin(), test.end(), 0) << endl;
 
-	system("Pause");
 	return 0;
 } // end main
